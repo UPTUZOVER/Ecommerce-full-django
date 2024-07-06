@@ -1,14 +1,12 @@
 from rest_framework import generics
 from .models import Cart, CartItem
-from .serializers import CartSerializer, CartItemSerializer
+from .serializers import CartSerializer, CartItemSerializer, AddCartItemSerializer
+from rest_framework.viewsets import  ModelViewSet
 
 class CartItemListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = CartItemSerializer
     queryset = CartItem.objects.all()
 
-    def perform_create(self, serializer):
-        cart = self.request.user.cart  # Assuming the user has a `cart` attribute
-        serializer.save(cart=cart)
 
         
 class CartItemRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -49,6 +47,44 @@ class CartRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
 
     def perform_destroy(self, instance):
         instance.delete()
+
+
+
+
+
+
+
+
+
+class CartItemViewSet(ModelViewSet):
+    serializer_class = CartItemSerializer
+
+    def get_queryset(self):
+        cart_pk = self.kwargs.get('cart_pk')
+        return CartItem.objects.filter(cart_id=cart_pk)
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return AddCartItemSerializer
+        return self.serializer_class
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['cart_id'] = self.kwargs.get('cart_pk')
+        return context
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

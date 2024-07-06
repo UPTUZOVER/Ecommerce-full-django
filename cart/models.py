@@ -21,18 +21,15 @@ class Cart(models.Model):
 
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE )
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True, blank=True)
     quantity = models.PositiveIntegerField(default=1)
     is_active = models.BooleanField(default=True)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
     def get_total_price(self):
-        return self.product.price * self.quantity
-
-
-    def get_cart_items(self):
-        return self.cartitem_set.all()
+        return self.product.true_price * self.quantity
 
     def __str__(self):
-        return f"{self.quantity} x {self.product.title}"
+        return f"{self.quantity}"
+    

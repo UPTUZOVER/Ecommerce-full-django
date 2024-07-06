@@ -4,14 +4,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from Account.views import (
                         RegisterView,
-                        LoginView, 
+                        LoginView,
                         LogoutView
                         )
 from cart.views import (
                         CartItemListCreateAPIView,
-                        CartListCreateAPIView, 
+                        CartListCreateAPIView,
                         CartItemRetrieveUpdateDestroyAPIView,
-                        CartRetrieveUpdateDestroyAPIView
+                        CartRetrieveUpdateDestroyAPIView,
+                        CartItemViewSet
+
                         )
 from cart_variant_2.views import (
                         ProductListCreateAPIView,
@@ -81,13 +83,14 @@ urlpatterns = [
     path('api/products/<str:pk>/', ProductDetailViewSet.as_view(), name='product-detail'),
     path('api/categories/', CategoryViewSet.as_view()),
     path('api/categories/<int:pk>/', CategoryDetailViewSet.as_view(), name='category-detail'),
-    
+
     #cart lar uchun
     path('api/cart-items/', CartItemListCreateAPIView.as_view(), name='cart-item-list-create'),
     path('api/cart-items/<int:pk>/', CartItemRetrieveUpdateDestroyAPIView.as_view(), name='cart-item-list-create'),
     path('api/carts/', CartListCreateAPIView.as_view(), name='cart-list-create'),
-    path('api/carts/<str:pk>/', CartRetrieveUpdateDestroyAPIView.as_view(), name='cart-retrieve-update-destroy'),
-    
+    path('api/carts/<str:pk>/cart', CartRetrieveUpdateDestroyAPIView.as_view(), name='cart-retrieve-update-destroy'),
+   # path('api/add-cart/', CartItemViewSet.as_view(), name='add-cart-item-view-set'),
+
     #cart variant 2 uchun
     path('api/variant/cart-items/', CartItemListCreateAPIView_.as_view(), name='cart-item-list-create'),
     path('api/variant/cart-items/<int:pk>/', CartItemRetrieveUpdateDestroyAPIView_.as_view(), name='cart-item-retrieve-update-destroy'),
@@ -114,4 +117,13 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'cart-items', CartItemViewSet, basename='cart-item')
+
+urlpatterns += router.urls
+
+
 

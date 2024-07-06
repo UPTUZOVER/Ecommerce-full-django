@@ -3,6 +3,8 @@ from .models import Cart, CartItem
 from products.models import Product
 from parler_rest.serializers import TranslatableModelSerializer
 from parler_rest.fields import TranslatedFieldsField
+from django.contrib.auth.models import AnonymousUser
+
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -12,6 +14,8 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = ['id', 'translations', 'price', 'image_main']
         ref_name = 'ProductSerializer'
+
+
 
 class CartItemSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True)
@@ -29,9 +33,6 @@ class CartItemSerializer(serializers.ModelSerializer):
 
 
 
-
-
-
 class CartSerializer(serializers.ModelSerializer):
     id = serializers.CharField(max_length=255, read_only=True)
     cart_items = CartItemSerializer(many=True, read_only=True, source='cartitem_set')
@@ -43,12 +44,16 @@ class CartSerializer(serializers.ModelSerializer):
         ref_name = 'CartSerializer'
 
     def create(self, validated_data):
-        cart_items = validated_data.pop('cart_items', [])
+        cart_items = validated_data.pop('cartitem_set', [])
         request = self.context.get('request', None)
-        id = request.session.session_key if request else None
-        if not id:
-            id = request.session.create()
-        cart, _ = Cart.objects.get_or_create(id=id)
+        user = request.user if request else None
+        if isinstance(user, AnonymousUser) or not user.is_authenticated:
+            id = request.session.session_key if request else None
+            if not id:
+                id = request.session.create()
+            cart, _ = Cart.objects.get_or_create(id=id)
+        else:
+            cart, _ = Cart.objects.get_or_create(user=user)
 
         for cart_item_data in cart_items:
             CartItem.objects.create(cart=cart, **cart_item_data)
@@ -57,16 +62,27 @@ class CartSerializer(serializers.ModelSerializer):
 
     def main_total(self, cart: Cart):
         items = cart.cartitem_set.all()
-        total = sum([item.quantity * item.product.price for item in items])
+        total = sum([item.quantity * item.product.true_price for item in items])
         return round(total, 2)
 
+class AddCartItemSerializer(serializers.ModelSerializer):
+    product_id = serializers.IntegerField()
 
+    def save(self, **kwargs):
+        cart_id = self.context["cart_id"]
+        product_id = self.validated_data["product_id"]
+        quantity = self.validated_data["quantity"]
 
+        try:
+            cart_item = CartItem.objects.get(cart_id=cart_id, product_id=product_id)
+            cart_item.quantity += quantity
+            cart_item.save()
+            self.instance = cart_item
+        except :
+            self.instance = CartItem.objects.create(cart_id=cart_id, product_id=product_id, quantity=quantity)
 
+        return self.instance
 
-
-
-
-
-
-
+    class Meta:
+        model = CartItem
+        fields = ["id", 'product_id', 'quantity']
