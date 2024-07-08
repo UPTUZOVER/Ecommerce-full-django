@@ -42,7 +42,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 CORS_ALLOW_ALL_ORIGINS = True
 DJOSER = {'SERIALIZERS':{"user_create":"user_base.serializers.MyUserSerializer"}}
 
-# DATABASES = database
+
 DATABASES = databases
 
 AUTH_PASSWORD_VALIDATORS = auth_password_validators

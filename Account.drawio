@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="lmpqV8OjHo5V-PXPLNSw" name="Page-1">
-        <mxGraphModel dx="1062" dy="560" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1070" dy="467" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -49,12 +49,6 @@
                         <mxPoint x="340" y="380" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="26" style="edgeStyle=none;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="6" target="20" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="27" style="edgeStyle=none;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="6" target="23" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
                 <mxCell id="6" value="models.py" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="280" y="250" width="120" height="60" as="geometry"/>
                 </mxCell>
@@ -83,6 +77,9 @@
                 <mxCell id="29" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="18" target="16" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
+                <mxCell id="71" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="18" target="20">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
                 <mxCell id="18" value="&lt;div style=&quot;color: rgb(200, 200, 200); background-color: rgb(0, 0, 0); font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #00dcdc;font-weight: bold;&quot;&gt;UserManager&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(200, 200, 200); background-color: rgb(0, 0, 0); font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #00dcdc;font-weight: bold;&quot;&gt;User&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="280" y="380" width="120" height="60" as="geometry"/>
                 </mxCell>
@@ -94,53 +91,6 @@
                 </mxCell>
                 <mxCell id="23" value="&lt;div style=&quot;color: rgb(200, 200, 200); background-color: rgb(0, 0, 0); font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-weight: normal; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;color: #00dcdc;font-weight: bold;&quot;&gt;RegisterView&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #00dcdc;font-weight: bold;&quot;&gt;LoginView&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;color: #00dcdc;font-weight: bold;&quot;&gt;LogoutView&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="640" y="380" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="33" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="30">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="170" y="730" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="41" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="30" target="35">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="43" style="edgeStyle=none;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="30">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="530" y="750" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="45" style="edgeStyle=none;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="30">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="680" y="625" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="47" style="edgeStyle=none;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="30">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="540" y="550" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="30" value="python&lt;span style=&quot;white-space: pre;&quot;&gt;&#9;&lt;/span&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="310" y="580" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="54" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="35" target="53">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="35" value="web" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="300" y="740" width="120" height="70" as="geometry"/>
-                </mxCell>
-                <mxCell id="42" value="AI" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="730" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="44" value="gaming" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="500" y="740" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="46" value="devoops" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="660" y="600" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="48" value="hacking" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="510" y="510" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="53" value="Python" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="300" y="920" width="120" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
